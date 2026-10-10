@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>麦麦浪费账本 · 抢救麦券大作战</title>
+<style>
+  :root {
+    --red: #DA291C;
+    --red-deep: #A81D13;
+    --yellow: #FFC72C;
+    --yellow-light: #FFF3D0;
+    --cream: #FFFBF2;
+    --ink: #2B2119;
+    --ink-2: #5C4B3A;
+    --ink-3: #8C7B68;
+    --line: #EFE2CE;
+    --green: #1E9E58;
+    --radius: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: linear-gradient(170deg, #FFF6E0 0%, #FFFBF2 40%, #FFF4E6 100%);
+    color: var(--ink);
+    line-height: 1.6;
+    padding: 28px 20px 56px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; }
+
+  /* ── 顶部账单 ─────────────────────────────── */
+  .bill {
+    background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%);
+    border-radius: 22px;
+    padding: 30px 26px 26px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(218, 41, 28, .26);
+  }
+  .bill::after {
+    content: "";
+    position: absolute;
+    right: -46px; top: -46px;
+    width: 180px; height: 180px;
+    background: var(--yellow);
+    border-radius: 50%;
+    opacity: .22;
+  }
+  .bill-tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--red-deep);
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: .6px;
+    padding: 4px 11px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .bill-label { font-size: 13.5px; opacity: .92; font-weight: 600; }
+  .bill-num {
+    font-size: 54px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    line-height: 1.08;
+    margin: 2px 0 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .bill-num small { font-size: 26px; font-weight: 800; margin-right: 2px; }
+  .bill-food {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--red-deep);
+    font-size: 13px;
+    font-weight: 900;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .bill-food:empty { display: none; }
+  .bill-sub { font-size: 12.5px; opacity: .9; line-height: 1.75; }
+
+  .bill-facts {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+    position: relative;
+    z-index: 1;
+  }
+  .bfact {
+    flex: 1;
+    background: rgba(255, 255, 255, .17);
+    border: 1px solid rgba(255, 255, 255, .26);
+    border-radius: 12px;
+    padding: 9px 11px;
+  }
+  .bfact .bv { font-size: 19px; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .bfact .bl { font-size: 10.5px; opacity: .88; margin-top: 1px; }
+
+  /* ── 周期卡 ───────────────────────────────── */
+  .sec-title {
+    font-size: 15.5px;
+    font-weight: 900;
+    margin: 30px 0 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sec-title .hint {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--ink-3);
+    margin-left: auto;
+  }
+
+  .periods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; }
+  @media (max-width: 620px) { .periods { grid-template-columns: 1fr; } }
+
+  .period-card {
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    padding: 15px 14px 13px;
+    box-shadow: 0 3px 12px rgba(92, 75, 58, .06);
+  }
+  .pc-head {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: var(--ink-2);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .pc-range {
+    margin-left: auto;
+    font-size: 9.5px;
+    font-weight: 600;
+    color: var(--ink-3);
+    letter-spacing: -.2px;
+  }
+  .pc-waste {
+    margin: 10px 0 9px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .pc-waste-label { font-size: 11px; color: var(--ink-3); font-weight: 700; }
+  .pc-waste-num {
+    font-size: 25px;
+    font-weight: 900;
+    color: var(--ink-2);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.6px;
+  }
+  .pc-waste.hot .pc-waste-num { color: var(--red); }
+
+  .pc-food {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--red-deep);
+    background: var(--yellow-light);
+    border-radius: 7px;
+    padding: 3px 7px;
+    margin: -4px 0 9px;
+    display: inline-block;
+  }
+  .pc-food:empty { display: none; }
+
+  .pc-rows { border-top: 1px dashed var(--line); padding-top: 8px; }
+  .pc-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11.5px;
+    color: var(--ink-3);
+    padding: 2px 0;
+  }
+  .pc-row b { color: var(--ink-2); font-weight: 800; }
+  .pc-row b.good { color: var(--green); }
+  .pc-row b.bad { color: var(--red); }
+
+  .pc-gone {
+    margin-top: 8px;
+    font-size: 10.5px;
+    color: var(--red);
+    background: #FFF0ED;
+    border-radius: 8px;
+    padding: 5px 8px;
+    line-height: 1.5;
+  }
+  .pc-empty {
+    font-size: 11.5px;
+    color: var(--ink-3);
+    padding: 14px 0 8px;
+    text-align: center;
+  }
+  .pc-empty span { font-size: 10.5px; color: #B5A896; }
+
+  /* ── 通用卡片 ─────────────────────────────── */
+  .card {
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: 0 3px 12px rgba(92, 75, 58, .06);
+  }
+
+  .diag {
+    background: var(--yellow-light);
+    border: 1.5px solid #F7DE9A;
+    border-radius: var(--radius);
+    padding: 15px 17px;
+    font-size: 13px;
+    line-height: 1.75;
+    color: #6B4E12;
+    margin-top: 20px;
+  }
+  .diag strong { color: var(--red-deep); font-weight: 900; }
+
+  /* ── 行动清单里的券 ───────────────────────── */
+  .tickets { display: flex; flex-direction: column; gap: 11px; }
+
+  .ticket {
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-left: 4px solid var(--ink-3);
+    border-radius: 13px;
+    padding: 13px 15px;
+    box-shadow: 0 3px 12px rgba(92, 75, 58, .06);
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+  }
+  .ticket.tonight { border-left-color: var(--red); background: #FFFAF8; }
+  .ticket.urgent { border-left-color: #F08A2C; }
+  .ticket.watch { border-left-color: var(--yellow); }
+  .ticket.unknown { border-left-color: #B5A896; }
+  .ticket.empty { border-left-color: var(--green); background: #F6FCF8; display: block; }
+
+  /* 产品图：白底方图，和卡片背景自然融合 */
+  .tk-photo {
+    flex: 0 0 84px;
+    width: 84px;
+    height: 84px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .tk-photo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .tk-photo--empty { background: #FFF6E0; font-size: 28px; }
+  .tk-body { flex: 1; min-width: 0; }
+
+  .tk-top { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .tk-emoji { font-size: 14px; }
+  .tk-name { font-size: 14px; font-weight: 800; }
+  .tk-count {
+    font-size: 10.5px;
+    font-weight: 800;
+    color: var(--red-deep);
+    background: var(--yellow);
+    border-radius: 999px;
+    padding: 1.5px 8px;
+  }
+  .tk-val {
+    margin-left: auto;
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--red);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .life-bar {
+    height: 5px;
+    background: #F3EADA;
+    border-radius: 999px;
+    margin: 10px 0 7px;
+    overflow: hidden;
+  }
+  .life-fill { height: 100%; border-radius: 999px; background: var(--green); }
+  .life-fill.tonight { background: var(--red); }
+  .life-fill.urgent { background: #F08A2C; }
+  .life-fill.watch { background: var(--yellow); }
+  .life-fill.unknown { background: #B5A896; }
+
+  .tk-life { font-size: 11.5px; font-weight: 700; color: var(--ink-3); }
+  .tk-life.hot { color: var(--red); }
+
+  /* 券的第一人称自述 */
+  .tk-mono {
+    margin-top: 8px;
+    padding: 8px 11px;
+    background: #FFF6E0;
+    border-left: 3px solid var(--yellow);
+    border-radius: 0 9px 9px 0;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #7A5A10;
+    font-style: italic;
+  }
+
+  .tk-plan {
+    font-size: 12px;
+    color: var(--ink-2);
+    line-height: 1.8;
+    margin-top: 7px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--line);
+  }
+  .tk-plan strong { color: var(--red-deep); font-weight: 800; }
+
+  /* ── 浪费博物馆 ───────────────────────────── */
+  .waste-list { display: flex; flex-direction: column; gap: 11px; }
+  .waste-card {
+    background: #FFF7F5;
+    border: 1.5px dashed #F3C4BD;
+    border-radius: 13px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+  }
+  /* 已经换不回来的东西 —— 图褪色，一眼看出"它过去了" */
+  .waste-photo {
+    flex: 0 0 76px;
+    width: 76px;
+    height: 76px;
+    border-radius: 11px;
+    background: #fff;
+    border: 1px solid #F3C4BD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    filter: grayscale(.45);
+    opacity: .82;
+  }
+  .waste-photo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .waste-photo--empty { font-size: 26px; filter: none; opacity: 1; }
+  .waste-body { flex: 1; min-width: 0; }
+
+  .waste-title {
+    font-size: 13.5px;
+    font-weight: 900;
+    color: var(--red-deep);
+    margin-bottom: 5px;
+  }
+  .waste-text { font-size: 12.5px; color: var(--ink-2); line-height: 1.8; }
+  .waste-mono {
+    margin-top: 8px;
+    padding: 7px 10px;
+    background: #fff;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--red-deep);
+    font-style: italic;
+  }
+  .waste-note {
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-top: 8px;
+    padding-top: 7px;
+    border-top: 1px dashed #F3C4BD;
+    font-style: italic;
+  }
+
+  /* ── 金拱门 ───────────────────────────────── */
+  .arches { display: block; color: var(--yellow); }
+  .arches--hero {
+    position: absolute;
+    right: 14px;
+    top: 16px;
+    width: 74px;
+    opacity: .92;
+    color: #FFC72C;
+  }
+  .arches--small { width: 17px; color: var(--red); flex: 0 0 auto; }
+
+  /* ── 窄屏 ─────────────────────────────────── */
+  @media (max-width: 560px) {
+    .ticket { padding: 12px; gap: 10px; }
+    .tk-photo { flex-basis: 64px; width: 64px; height: 64px; }
+    .waste-photo { flex-basis: 60px; width: 60px; height: 60px; }
+    .arches--hero { width: 54px; }
+  }
+
+  /* ── 底部 ─────────────────────────────────── */
+  .foot {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-3);
+    line-height: 1.8;
+  }
+  .foot .brand {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-weight: 800;
+    font-size: 10.5px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .foot .brand.demo { background: var(--ink-3); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 顶部账单 -->
+  <div class="bill">
+    {{ARCHES_HERO}}
+    <span class="bill-tag">麦麦浪费账本</span>
+    <div class="bill-label">今年以来，你已经白扔了</div>
+    <div class="bill-num"><small>¥</small>{{HEADLINE}}</div>
+    <div class="bill-food">{{HEADLINE_FOOD}}</div>
+    <div class="bill-sub">{{HEADLINE_SUB}}</div>
+    <div class="bill-facts">
+      <div class="bfact"><div class="bv">¥{{WEEK_WASTE}}</div><div class="bl">本周白扔</div></div>
+      <div class="bfact"><div class="bv">¥{{MONTH_WASTE}}</div><div class="bl">本月白扔</div></div>
+      <div class="bfact"><div class="bv">{{GRAB_RATE}}%</div><div class="bl">薅到率</div></div>
+    </div>
+  </div>
+
+  <!-- 诊断 -->
+  <div class="diag">{{DIAGNOSIS}}</div>
+
+  <!-- 周期统计 -->
+  <div class="sec-title">{{ARCHES_SMALL}} 白扔了多少 · 周 / 月 / 年<span class="hint">每天体检一次，这里越攒越准</span></div>
+  <div class="periods">{{PERIOD_HTML}}</div>
+
+  <!-- 还能救的 -->
+  <div class="sec-title">{{ARCHES_SMALL}} 还能救的（{{URGENT_COUNT}} 张）<span class="hint">趁它们还在</span></div>
+  <div class="tickets">{{URGENT_HTML}}</div>
+
+  <!-- 救不回来的 -->
+  <div class="sec-title">{{ARCHES_SMALL}} 浪费博物馆<span class="hint">这些已经换不回来了</span></div>
+  <div class="waste-list">{{WASTE_HTML}}</div>
+
+  <!-- 券包概况 -->
+  <div class="sec-title">{{ARCHES_SMALL}} 券包概况</div>
+  <div class="card">
+    <div class="pc-rows">
+      <div class="pc-row"><span>券包总数</span><b>{{TOTAL}} 张</b></div>
+      <div class="pc-row"><span>今晚 24:00 清零</span><b class="bad">{{TONIGHT}} 张</b></div>
+      <div class="pc-row"><span>券面总价值</span><b>¥{{LIVE_VALUE}}</b></div>
+      <div class="pc-row"><span>正在倒计时的价值</span><b class="bad">¥{{AT_RISK}}</b></div>
+      <div class="pc-row"><span>已作废积分</span><b class="bad">{{DEAD_POINTS}} 分（≈ ¥{{DEAD_POINTS_VALUE}}）</b></div>
+      <div class="pc-row"><span>当前可用积分</span><b>{{AVAILABLE_POINTS}} 分</b></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    {{ARCHES_SMALL}}
+    <div class="brand {{MODE_CLASS}}">{{MODE}} 数据</div><br>
+    体检时间 {{DATE}}<br>
+    抢救麦券大作战 · 券不会等你，积分也不会 · 想到就吃掉它
+  </div>
+
+</div>
+</body>
+</html>

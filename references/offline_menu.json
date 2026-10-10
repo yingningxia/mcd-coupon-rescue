@@ -1,0 +1,727 @@
+{
+  "_meta": {
+    "purpose": "「抢救麦券大作战」DEMO 模式离线数据集。当用户未配置麦当劳 MCP Token 或 Token 失效时使用。",
+    "note": "字段结构对齐真实麦当劳 MCP 返回（query-my-coupons / query-meals / query-nearby-stores / query-my-account）。配置 Token 后所有数据来自 https://mcp.mcd.cn 实时接口。",
+    "date_placeholder": "tradeEndDateTime 中支持 @today / @today+N 占位，由 mcd_client 在 DEMO 模式下动态解析为真实日期，保证演示永远存在'临终券'。"
+  },
+  "nutrition": [
+    {
+      "productName": "巨无霸",
+      "energyKcal": 550,
+      "protein": 26,
+      "fat": 29,
+      "carbohydrate": 45,
+      "sodium": 1050,
+      "calcium": 180
+    },
+    {
+      "productName": "双层安格斯厚牛堡",
+      "energyKcal": 720,
+      "protein": 42,
+      "fat": 42,
+      "carbohydrate": 44,
+      "sodium": 1280,
+      "calcium": 210
+    },
+    {
+      "productName": "麦辣鸡腿堡",
+      "energyKcal": 540,
+      "protein": 24,
+      "fat": 26,
+      "carbohydrate": 50,
+      "sodium": 1120,
+      "calcium": 120
+    },
+    {
+      "productName": "板烧鸡腿堡",
+      "energyKcal": 470,
+      "protein": 25,
+      "fat": 20,
+      "carbohydrate": 45,
+      "sodium": 990,
+      "calcium": 110
+    },
+    {
+      "productName": "麦香鱼",
+      "energyKcal": 340,
+      "protein": 15,
+      "fat": 14,
+      "carbohydrate": 38,
+      "sodium": 620,
+      "calcium": 130
+    },
+    {
+      "productName": "吉士汉堡",
+      "energyKcal": 300,
+      "protein": 15,
+      "fat": 13,
+      "carbohydrate": 31,
+      "sodium": 680,
+      "calcium": 220
+    },
+    {
+      "productName": "大薯条",
+      "energyKcal": 340,
+      "protein": 4,
+      "fat": 16,
+      "carbohydrate": 44,
+      "sodium": 270,
+      "calcium": 20
+    },
+    {
+      "productName": "中薯条",
+      "energyKcal": 230,
+      "protein": 3,
+      "fat": 11,
+      "carbohydrate": 30,
+      "sodium": 190,
+      "calcium": 14
+    },
+    {
+      "productName": "麦乐鸡(5块)",
+      "energyKcal": 230,
+      "protein": 14,
+      "fat": 13,
+      "carbohydrate": 14,
+      "sodium": 480,
+      "calcium": 30
+    },
+    {
+      "productName": "麦辣鸡翅(2块)",
+      "energyKcal": 240,
+      "protein": 16,
+      "fat": 15,
+      "carbohydrate": 11,
+      "sodium": 520,
+      "calcium": 25
+    },
+    {
+      "productName": "麦旋风(奥利奥)",
+      "energyKcal": 340,
+      "protein": 8,
+      "fat": 12,
+      "carbohydrate": 50,
+      "sodium": 160,
+      "calcium": 200
+    },
+    {
+      "productName": "圆筒冰淇淋",
+      "energyKcal": 150,
+      "protein": 4,
+      "fat": 4,
+      "carbohydrate": 24,
+      "sodium": 80,
+      "calcium": 120
+    },
+    {
+      "productName": "可口可乐(中杯)",
+      "energyKcal": 150,
+      "protein": 0,
+      "fat": 0,
+      "carbohydrate": 39,
+      "sodium": 30,
+      "calcium": 0
+    },
+    {
+      "productName": "零度可乐(中杯)",
+      "energyKcal": 0,
+      "protein": 0,
+      "fat": 0,
+      "carbohydrate": 0,
+      "sodium": 25,
+      "calcium": 0
+    },
+    {
+      "productName": "玉米杯",
+      "energyKcal": 90,
+      "protein": 3,
+      "fat": 1,
+      "carbohydrate": 19,
+      "sodium": 90,
+      "calcium": 5
+    },
+    {
+      "productName": "蔬菜沙拉(和风酱)",
+      "energyKcal": 110,
+      "protein": 3,
+      "fat": 5,
+      "carbohydrate": 14,
+      "sodium": 340,
+      "calcium": 40
+    },
+    {
+      "productName": "猪柳麦满分",
+      "energyKcal": 308,
+      "protein": 16,
+      "fat": 16,
+      "carbohydrate": 24,
+      "sodium": 781,
+      "calcium": 213
+    },
+    {
+      "productName": "热香饼(3片)",
+      "energyKcal": 320,
+      "protein": 6,
+      "fat": 9,
+      "carbohydrate": 53,
+      "sodium": 480,
+      "calcium": 90
+    }
+  ],
+  "meals": [
+    {
+      "code": "M001",
+      "name": "巨无霸",
+      "category": "汉堡",
+      "price": 23.5,
+      "energyKcal": 550,
+      "tag": [
+        "经典"
+      ]
+    },
+    {
+      "code": "M002",
+      "name": "双层安格斯厚牛堡",
+      "category": "汉堡",
+      "price": 36.0,
+      "energyKcal": 720,
+      "tag": [
+        "高蛋白"
+      ]
+    },
+    {
+      "code": "M003",
+      "name": "麦辣鸡腿堡",
+      "category": "汉堡",
+      "price": 21.5,
+      "energyKcal": 540,
+      "tag": [
+        "辣",
+        "爆款"
+      ]
+    },
+    {
+      "code": "M004",
+      "name": "板烧鸡腿堡",
+      "category": "汉堡",
+      "price": 22.0,
+      "energyKcal": 470,
+      "tag": [
+        "不辣"
+      ]
+    },
+    {
+      "code": "M005",
+      "name": "麦香鱼",
+      "category": "汉堡",
+      "price": 16.5,
+      "energyKcal": 340,
+      "tag": [
+        "轻负担"
+      ]
+    },
+    {
+      "code": "M006",
+      "name": "吉士汉堡",
+      "category": "汉堡",
+      "price": 13.5,
+      "energyKcal": 300,
+      "tag": [
+        "入门"
+      ]
+    },
+    {
+      "code": "S001",
+      "name": "大薯条",
+      "category": "小食",
+      "price": 14.0,
+      "energyKcal": 340,
+      "tag": [
+        "经典"
+      ]
+    },
+    {
+      "code": "S002",
+      "name": "中薯条",
+      "category": "小食",
+      "price": 11.5,
+      "energyKcal": 230,
+      "tag": [
+        "经典"
+      ]
+    },
+    {
+      "code": "S003",
+      "name": "麦乐鸡(5块)",
+      "category": "小食",
+      "price": 13.0,
+      "energyKcal": 230,
+      "tag": [
+        "高蛋白"
+      ]
+    },
+    {
+      "code": "S004",
+      "name": "麦辣鸡翅(2块)",
+      "category": "小食",
+      "price": 13.5,
+      "energyKcal": 240,
+      "tag": [
+        "辣"
+      ]
+    },
+    {
+      "code": "S005",
+      "name": "玉米杯",
+      "category": "小食",
+      "price": 9.0,
+      "energyKcal": 90,
+      "tag": [
+        "轻负担"
+      ]
+    },
+    {
+      "code": "S006",
+      "name": "蔬菜沙拉(和风酱)",
+      "category": "小食",
+      "price": 14.0,
+      "energyKcal": 110,
+      "tag": [
+        "轻负担"
+      ]
+    },
+    {
+      "code": "D001",
+      "name": "可口可乐(中杯)",
+      "category": "饮料",
+      "price": 9.5,
+      "energyKcal": 150,
+      "tag": []
+    },
+    {
+      "code": "D002",
+      "name": "零度可乐(中杯)",
+      "category": "饮料",
+      "price": 9.5,
+      "energyKcal": 0,
+      "tag": [
+        "0糖"
+      ]
+    },
+    {
+      "code": "D003",
+      "name": "麦旋风(奥利奥)",
+      "category": "甜品",
+      "price": 16.5,
+      "energyKcal": 340,
+      "tag": [
+        "甜品"
+      ]
+    },
+    {
+      "code": "D004",
+      "name": "圆筒冰淇淋",
+      "category": "甜品",
+      "price": 5.0,
+      "energyKcal": 150,
+      "tag": [
+        "甜品",
+        "便宜"
+      ]
+    },
+    {
+      "code": "M010",
+      "name": "1+1随心配",
+      "category": "套餐",
+      "price": 13.5,
+      "energyKcal": 640,
+      "tag": [
+        "超值",
+        "爆款"
+      ]
+    },
+    {
+      "code": "M011",
+      "name": "麦乐鸡开心乐园餐",
+      "category": "套餐",
+      "price": 35.0,
+      "energyKcal": 520,
+      "tag": [
+        "含玩具"
+      ]
+    }
+  ],
+  "stores": [
+    {
+      "storeCode": "SZ001",
+      "storeName": "麦当劳(科技园店)",
+      "city": "深圳",
+      "address": "南山区科苑路15号",
+      "distance": 62,
+      "businessStatus": true,
+      "businessStartTime": "06:00",
+      "businessEndTime": "22:00",
+      "beTypes": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "storeCode": "SZ002",
+      "storeName": "麦当劳(万象天地店)",
+      "city": "深圳",
+      "address": "南山区深南大道9668号",
+      "distance": 87,
+      "businessStatus": true,
+      "businessStartTime": "07:00",
+      "businessEndTime": "23:30",
+      "beTypes": [
+        1,
+        2
+      ]
+    },
+    {
+      "storeCode": "SZ003",
+      "storeName": "麦当劳(深大地铁站得来速)",
+      "city": "深圳",
+      "address": "南山区科技南十路",
+      "distance": 99,
+      "businessStatus": true,
+      "businessStartTime": "06:30",
+      "businessEndTime": "22:30",
+      "beTypes": [
+        1,
+        5
+      ]
+    },
+    {
+      "storeCode": "BJ001",
+      "storeName": "麦当劳(中关村店)",
+      "city": "北京",
+      "address": "海淀区中关村大街1号",
+      "distance": 30,
+      "businessStatus": true,
+      "businessStartTime": "06:00",
+      "businessEndTime": "22:00",
+      "beTypes": [
+        1,
+        2
+      ]
+    },
+    {
+      "storeCode": "SH001",
+      "storeName": "麦当劳(陆家嘴店)",
+      "city": "上海",
+      "address": "浦东新区世纪大道8号",
+      "distance": 50,
+      "businessStatus": true,
+      "businessStartTime": "06:00",
+      "businessEndTime": "23:00",
+      "beTypes": [
+        1,
+        2,
+        5
+      ]
+    }
+  ],
+  "_my_coupons_note": "字段结构对齐真实 query-my-coupons。tradeEndDateTime 用 @today / @today+N 占位，DEMO 模式下动态解析。",
+  "my_coupons": [
+    {
+      "id": "DEMO_A1",
+      "code": "MCDDEMOA1",
+      "title": "巧克力味厚松饼猪柳蛋套餐",
+      "tradeEndDateTime": "@today 23:59:59",
+      "tradeEndDate": "@today",
+      "discountInfo": {
+        "discountValue": "29.9",
+        "discountDesc": "用券价格",
+        "discountTypeText": "¥"
+      },
+      "tags": [
+        {
+          "label": "今日到期"
+        },
+        {
+          "label": "到店专用"
+        }
+      ],
+      "receivedDays": 4,
+      "receivedDaysMsg": "4日前收到",
+      "currentDayAvailableCount": 1,
+      "totalCount": 1,
+      "tradeTimePeriods": [
+        {
+          "startTime": "05:00:00",
+          "endTime": "10:29:00"
+        }
+      ],
+      "image": "local:coupons/巧克力味厚松饼猪柳蛋套餐.png",
+      "subtitle": "演示数据（离线）"
+    },
+    {
+      "id": "DEMO_A2",
+      "code": "MCDDEMOA2",
+      "title": "麦旋风任选",
+      "tradeEndDateTime": "@today 23:59:59",
+      "tradeEndDate": "@today",
+      "discountInfo": {
+        "discountValue": "9.9",
+        "discountDesc": "用券价格",
+        "discountTypeText": "¥"
+      },
+      "tags": [
+        {
+          "label": "今日到期"
+        },
+        {
+          "label": "到店专用"
+        },
+        {
+          "label": "外送专用"
+        }
+      ],
+      "receivedDays": 3,
+      "receivedDaysMsg": "3日前收到",
+      "currentDayAvailableCount": 1,
+      "totalCount": 1,
+      "tradeTimePeriods": [
+        {
+          "startTime": "10:30:00",
+          "endTime": "23:59:59"
+        }
+      ],
+      "image": "local:coupons/麦旋风任选.gif",
+      "subtitle": "演示数据（离线）"
+    },
+    {
+      "id": "DEMO_A3",
+      "code": "MCDDEMOA3",
+      "title": "火腿扒堡早餐两件套",
+      "tradeEndDateTime": "@today+2 10:29:00",
+      "tradeEndDate": "@today+2",
+      "discountInfo": {
+        "discountValue": "9.9",
+        "discountDesc": "用券价格",
+        "discountTypeText": "¥"
+      },
+      "tags": [
+        {
+          "label": "到店专用"
+        }
+      ],
+      "receivedDays": 3,
+      "receivedDaysMsg": "3日前收到",
+      "currentDayAvailableCount": 1,
+      "totalCount": 1,
+      "tradeTimePeriods": [
+        {
+          "startTime": "05:00:00",
+          "endTime": "10:29:00"
+        }
+      ],
+      "image": "local:coupons/火腿扒堡早餐两件套.png",
+      "subtitle": "演示数据（离线）"
+    },
+    {
+      "id": "DEMO_A4",
+      "code": "MCDDEMOA4",
+      "title": "芝香脆鸡扒堡早餐两件套",
+      "tradeEndDateTime": "@today+3 10:29:00",
+      "tradeEndDate": "@today+3",
+      "discountInfo": {
+        "discountValue": "9.9",
+        "discountDesc": "用券价格",
+        "discountTypeText": "¥"
+      },
+      "tags": [
+        {
+          "label": "到店专用"
+        }
+      ],
+      "receivedDays": 3,
+      "receivedDaysMsg": "3日前收到",
+      "currentDayAvailableCount": 1,
+      "totalCount": 1,
+      "tradeTimePeriods": [
+        {
+          "startTime": "05:00:00",
+          "endTime": "10:29:00"
+        }
+      ],
+      "image": "local:coupons/芝香脆鸡扒堡早餐两件套.png",
+      "subtitle": "演示数据（离线）"
+    },
+    {
+      "id": "DEMO_A5",
+      "code": "MCDDEMOA5",
+      "title": "火腿扒堡早餐两件套",
+      "tradeEndDateTime": "@today+5 10:29:00",
+      "tradeEndDate": "@today+5",
+      "discountInfo": {
+        "discountValue": "9.9",
+        "discountDesc": "用券价格",
+        "discountTypeText": "¥"
+      },
+      "tags": [
+        {
+          "label": "到店专用"
+        }
+      ],
+      "receivedDays": 3,
+      "receivedDaysMsg": "3日前收到",
+      "currentDayAvailableCount": 1,
+      "totalCount": 1,
+      "tradeTimePeriods": [
+        {
+          "startTime": "05:00:00",
+          "endTime": "10:29:00"
+        }
+      ],
+      "image": "local:coupons/火腿扒堡早餐两件套.png",
+      "subtitle": "演示数据（离线）"
+    },
+    {
+      "id": "DEMO_A6",
+      "code": "MCDDEMOA6",
+      "title": "高达芝士蛋堡早餐两件套",
+      "tradeEndDateTime": "@today+4 10:29:00",
+      "tradeEndDate": "@today+4",
+      "discountInfo": {
+        "discountValue": "9.9",
+        "discountDesc": "用券价格",
+        "discountTypeText": "¥"
+      },
+      "tags": [
+        {
+          "label": "到店专用"
+        }
+      ],
+      "receivedDays": 3,
+      "receivedDaysMsg": "3日前收到",
+      "currentDayAvailableCount": 1,
+      "totalCount": 1,
+      "tradeTimePeriods": [
+        {
+          "startTime": "05:00:00",
+          "endTime": "10:29:00"
+        }
+      ],
+      "image": "local:coupons/高达芝士蛋堡早餐两件套.png",
+      "subtitle": "演示数据（离线）"
+    },
+    {
+      "id": "DEMO_A7",
+      "code": "MCDDEMOA7",
+      "title": "大脆鸡扒堡早餐两件套",
+      "tradeEndDateTime": "@today+6 10:29:00",
+      "tradeEndDate": "@today+6",
+      "discountInfo": {
+        "discountValue": "9.9",
+        "discountDesc": "用券价格",
+        "discountTypeText": "¥"
+      },
+      "tags": [
+        {
+          "label": "到店专用"
+        }
+      ],
+      "receivedDays": 3,
+      "receivedDaysMsg": "3日前收到",
+      "currentDayAvailableCount": 1,
+      "totalCount": 1,
+      "tradeTimePeriods": [
+        {
+          "startTime": "05:00:00",
+          "endTime": "10:29:00"
+        }
+      ],
+      "image": "local:coupons/大脆鸡扒堡早餐两件套.png",
+      "subtitle": "演示数据（离线）"
+    },
+    {
+      "id": "DEMO_A8",
+      "code": "MCDDEMOA8",
+      "title": "巧克力味厚松饼猪柳蛋套餐",
+      "tradeEndDateTime": "@today+9 10:29:00",
+      "tradeEndDate": "@today+9",
+      "discountInfo": {
+        "discountValue": "29.9",
+        "discountDesc": "用券价格",
+        "discountTypeText": "¥"
+      },
+      "tags": [
+        {
+          "label": "到店专用"
+        }
+      ],
+      "receivedDays": 3,
+      "receivedDaysMsg": "3日前收到",
+      "currentDayAvailableCount": 1,
+      "totalCount": 1,
+      "tradeTimePeriods": [
+        {
+          "startTime": "05:00:00",
+          "endTime": "10:29:00"
+        }
+      ],
+      "image": "local:coupons/巧克力味厚松饼猪柳蛋套餐.png",
+      "subtitle": "演示数据（离线）"
+    }
+  ],
+  "available_coupons": [
+    {
+      "couponId": "AV001",
+      "couponName": "早餐时段满15减4",
+      "couponStatus": "CAN_RECEIVE",
+      "label": "可领取"
+    },
+    {
+      "couponId": "AV002",
+      "couponName": "1+1随心配减2元",
+      "couponStatus": "CAN_RECEIVE",
+      "label": "可领取"
+    },
+    {
+      "couponId": "AV003",
+      "couponName": "麦乐送免配送费",
+      "couponStatus": "CAN_RECEIVE",
+      "label": "可领取"
+    }
+  ],
+  "campaigns": [
+    {
+      "name": "1024程序员节·麦麦码力充电站",
+      "status": "进行中",
+      "period": "2026-10-01 ~ 2026-10-31",
+      "desc": "指定套餐第二份半价，凭工牌到店可领限定周边"
+    },
+    {
+      "name": "麦麦省·周周领",
+      "status": "进行中",
+      "period": "每周一更新",
+      "desc": "每周一自动发放新一轮优惠券"
+    },
+    {
+      "name": "麦乐送狂欢周",
+      "status": "即将开始",
+      "period": "2026-10-20 ~ 2026-10-26",
+      "desc": "外送订单满39减8，叠加免配送费"
+    },
+    {
+      "name": "麦麦商城积分兑换季",
+      "status": "进行中",
+      "period": "2026-10-01 ~ 2026-11-15",
+      "desc": "积分兑换实物周边，部分商品5折积分价"
+    }
+  ],
+  "account": {
+    "availablePoint": "116.4",
+    "accumulativePoint": "532.5",
+    "currency": "麦享会积分",
+    "expiredPoint": "416.1",
+    "currentMouthExpirePoint": "0",
+    "usedPoint": "0",
+    "frozenPoint": "0"
+  }
+}

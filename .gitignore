@@ -1,0 +1,36 @@
+# ── 本地数据（含个人券与积分信息，绝不提交）────────────────
+data/
+
+# ── 图片运行时缓存 ──────────────────────────────────────
+# 只保留 assets/img/coupons/（离线演示需要的归档券图），
+# 其余 hash 命名的散图是运行时缓存，会自动重建。
+assets/img/*.png
+assets/img/*.gif
+assets/img/*.jpg
+assets/img/index.json
+
+# ── 凭据（绝不提交）──────────────────────────────────────
+.env
+*.token
+mcp.json
+mcp_token
+
+# ── Python ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# ── 编辑器 / 系统 ────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# ── 临时文件 ────────────────────────────────────────────
+_preview*.html
+_p_*.html
+_*.png
+_edgeprofile/
